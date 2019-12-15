@@ -1,6 +1,7 @@
 from requests import get
 from json import loads
 
+
 API_URL = "https://api.freelancehunt.com/v2"
 
 
