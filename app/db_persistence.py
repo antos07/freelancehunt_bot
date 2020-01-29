@@ -4,7 +4,7 @@ from config import DATABASE_URL
 from collections import defaultdict
 from psycopg2 import connect
 import logging
-from json import dumps
+from pickle import dumps, loads
 from app.utils import tuple_from_key
 
 
@@ -77,12 +77,13 @@ class DBPersistence(BasePersistence):
                 for user_id, data in cur:
                     if data is None:
                         data = {}
+                    else:
+                        data = loads(data)
                     user_data[user_id] = data
         except Exception as e:
             self.logger.exception("Caught error \"%s\" - user_data wasn`t loaded" % e)
         else:
             self.logger.info("user_data was loaded")
         finally:
-            self.logger.debug("user_data is: %s" % user_data)
+            self.logger.debug("user_data is: %s", user_data)
             return user_data
-

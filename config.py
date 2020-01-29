@@ -12,7 +12,7 @@ LOGGING_LEVEL = logging.DEBUG
 
 # bot config
 BOT_TOKEN = environ.get("BOT_TOKEN")
-PARSE_MODE = ParseMode.MARKDOWN
+PARSE_MODE = ParseMode.HTML
 
 
 # persistence settings
